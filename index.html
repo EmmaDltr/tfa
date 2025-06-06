@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Emma Deltenre">
+    <meta name="description" content="My personal portfolio as a creative web student">
+    <meta name="keywords" content="web, development, design, creative, student, portfolio">
+    <title>Emma Deltenre</title>
+    <meta property="og:title" content="Emma Deltenre - Portfolio">
+    <meta property="og:description" content="My personal portfolio as a creative web student">
+    <meta property="og:url" content="https://emma-deltenre.be ">
+    <script type="module" src="src/app.js" defer></script>
+    <base href="/projets/tfa">
+</head>
+
+<body>
+    <div class="vertical-line"></div>
+    <header>
+        <button class="header__menu-btn">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+        <nav class="header__menu" style="display: none;">
+            <ul>
+                <li><a class="menu__links" href="#hero">Accueil</a></li>
+                <li><a class="menu__links" href="#projects">Projects</a></li>
+                <li><a class="menu__links" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <img src="/img/abstract.png" alt="Abstract background" class="hero__background">
+            <p class="hero__subtitle">Hi I'm</p>
+            <h1 class="hero__title">
+                <span class="hero__title--firstname">Emma</span>
+                <span class="hero__title--lastname">Deltenre</span>
+            </h1>
+        </div>
+        <span class="hero__line"></span>
+        <div class="hero__hour">
+            <p id="hour">00:00 PM/AM</p>
+            <p class="hero__hour-txt">Good <span id="time"></span> from Namur</p>
+        </div>
+    </section>
+    <section class="about">
+        <div class="about__content">
+            <p class="about__text">As a <span class="about__text--custom">creative web</span> design student, I love to
+                bring a <span class="about__text--custom">dynamic</span> approach to every projet , infusing <span
+                    class="about__text--custom">fresh</span> and <span class="about__text--custom">innovative</span>
+                ideas to my designs.</p>
+        </div>
+    </section>
+    <section id="horizontal-scroll">
+        <div class="scroll-wrapper" id="projects">
+            <div class="projects">
+                <div class="projects__content">
+                    <h2 class="projects__title"> Projects I'm <span class="projects__title--custom">proud</span> of
+                        <span class="projects__line"></span>
+                    </h2>
+                </div>
+            </div>
+            <div id="showcase">
+                <div class="panel">
+                    <h3 class="panel__title">DESIGN FICTION <span class="panel__name">- EXP. Sensora</span></h3>
+                    <div class="panel__line"></div>
+                    <div class="panel__content">
+                        <div class="panel__img">
+                            <img src="/img/sensora.png" alt="Sensora project">
+                            <a href="https://emma-deltenre.be/projets/df/" class="panel__btn">Visit project</a>
+                        </div>
+                        <p class="panel__description">Design fiction explores near-future scenarios by simulating the
+                            impact of emerging technologies on daily life. In this project, I created a fictional
+                            platform where AI reimagines films based on the user's emotions.</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3 class="panel__title panel__title--2">DÉCEMBRE <span class="panel__name panel__name--2">- Capture
+                            #2</span></h3>
+                    <div class="panel__line"></div>
+                    <div class="panel__content">
+                        <div class="panel__img">
+                            <img src="/img/decembre.png" alt="Sensora project" />
+                            <a class="panel__btn panel__btn--2" href="https://emma-deltenre.be/projets/decembre/">Visit project</a>
+                            <a class="panel__btn panel__btn--2 panel__btn--secondary" href="https://emma-deltenre.be/projets/casestudy-decembre/">Case Study</a>
+                        </div>
+                        <p class="panel__description">Capture#2 is a fictional website for selling tickets to the
+                            exhibition of the same name. This project allowed me to explore user-focused interface
+                            design and simulate a complete purchasing process.</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3 class="panel__title panel__title--3">Rethinking UX <span class="panel__name panel__name--3">-
+                            Mots' tivants</span></h3>
+                    <div class="panel__line"></div>
+                    <div class="panel__content">
+                        <div class="panel__img">
+                            <img src="/img/mots'tivants.png" alt="Sensora project">
+                            <a class="panel__btn panel__btn--3" href="https://emma-deltenre.be/projets/rethinking-ux/">Visit project</a>
+                            <a class="panel__btn panel__btn--3 panel__btn--secondary" href="https://emma-deltenre.be/projets/casestudy-rux/">Case Study</a>
+                        </div>
+                        <p class="panel__description">A group project focused on redesigning the user experience in a
+                            physical space by creating a collaborative and inspiring setup using Design Thinking.</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3 class="panel__title panel__title--4">VARIABLES <span class="panel__name panel__name--4">- Le
+                            hijab et le porno</span></h3>
+                    <div class="panel__line"></div>
+                    <div class="panel__content">
+                        <div class="panel__img">
+                            <img src="/img/variables.png" alt="Portfolio project">
+                            <a class="panel__btn panel__btn--4" href="https://emma-deltenre.be/projets/variable/">Visit project</a>
+                        </div>
+                        <p class="panel__description">Variables is a typography project using variable fonts to animate
+                            excerpts from Olivier Marboeuf’s poems. By adjusting font weight, width, and slant
+                            dynamically, the reading experience changes with each line. This group project combined a
+                            shared page with excerpts and individual pages showcasing each student’s unique artistic
+                            interpretation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="contact__content">
+            <h2 class="contact__title">I'm a message <span class="contact__title--custom">away</span></h2>
+            <span class="contact__line"></span>
+            <a href="mailto:votreadresse@mail.fr" class="contact__email">Emma.Deltenre@gmail.com</a>
+            <div class="contact__socials">
+                <a href="https://www.instagram.com/emma.carena.be/" class="contact__social-link">Instagram</a>
+                <a href="https://www.linkedin.com/in/emmadeltenre/" class="contact__social-link">Linkedin</a>
+                <a href="https://github.com/EmmaDltr" class="contact__social-link">Github</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer">
+            <p class="footer__text">Made with heart in Namur</p>
+            <p class="footer__text">© 2024 Emma Deltenre</p>
+            <a href="" class="footer__credit">Crédits</a>
+        </div>
+    </footer>
+</body>
+
+</html>

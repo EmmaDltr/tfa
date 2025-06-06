@@ -1,0 +1,726 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Clash Display Medium */
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/clashDisplay/ClashDisplay-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Pangaia – Bold */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Pangaia – Bold Italic */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* PP Pangaia – Medium */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Pangaia – Medium Italic */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* PP Pangaia – UltraLight */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Pangaia – UltraLight Italic */
+@font-face {
+  font-family: "PP Pangaia";
+  src: url("/fonts/PPPangaia/PPPangaia-UltralightItalic.otf") format("opentype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Merchant Copy – Classic */
+@font-face {
+  font-family: "Merchant Copy";
+  src: url("/fonts/MerchantCopy/Merchant-Copy.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top right,
+    #cfff81 0%,
+    #ffffff 10%,
+    #e0ace5 15%
+  );
+}
+
+.header__menu {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-color: #e0ace5;
+
+  & ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.vertical-line {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  width: 1px;
+  height: 100vh;
+  background-color: #1e1e1e;
+  z-index: 10;
+}
+.header__menu {
+  display: none;
+
+  :active {
+    display: block;
+  }
+}
+
+.menu__links {
+  text-decoration: none;
+  color: #1e1e1e;
+  font-size: 32px;
+  font-family: "Clash Display", sans-serif;
+  font-weight: 500;
+
+  &:hover {
+    color: #cfff81;
+    transition: color 0.3s ease;
+  }
+}
+
+.header__menu-btn {
+  z-index: 1001;
+  position: fixed;
+  top: 30px;
+  left: 15px;
+  width: 34px;
+  height: 34px;
+  background-color: #cfff81;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    background-color: #e0ace5;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+
+  & .burger-line {
+    width: 20px;
+    height: 1px;
+    background-color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    .burger-line:nth-child(1) {
+      transform: translateY(4px) rotate(45deg);
+    }
+    .burger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-line:nth-child(3) {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+  }
+}
+
+// Section HERO
+
+.hero {
+  height: 100vh;
+  position: relative;
+
+  &__content {
+    max-width: 700px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  &__subtitle {
+    position: absolute;
+    top: -20px;
+    font-size: 32px;
+    font-family: "Clash Display", sans-serif;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    font-size: 128px;
+    font-family: "PP Pangaia", sans-serif;
+    font-style: italic;
+    font-weight: 500;
+
+    &--lastname {
+      text-align: right;
+    }
+  }
+  &__hour {
+    position: absolute;
+    bottom: 30px;
+    left: 150px;
+    font-size: 32px;
+    line-height: 120%;
+    font-family: "Merchant Copy", sans-serif;
+    color: #1e1e1e;
+  }
+
+  &__line {
+    content: "";
+    width: 2px;
+    height: 200px;
+    background-color: #e0ace5;
+    position: absolute;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    bottom: -200px;
+  }
+}
+// Section ABOUT
+.about {
+  margin: 400px 0 200px 150px;
+  &__content {
+    max-width: 700px;
+  }
+  &__text {
+    font-size: 64px;
+    font-family: "clash Display", sans-serif;
+    font-weight: 500;
+    color: #cfff81;
+  }
+  &__text--custom {
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    color: #1e1e1e;
+  }
+}
+
+// Section PROJECTS
+.projects {
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
+
+  &__content {
+    max-width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__title {
+    position: relative;
+    font-size: 128px;
+    font-family: "clash Display", sans-serif;
+    font-weight: 500;
+    color: #1e1e1e;
+  }
+
+  &__title--custom {
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    color: #cfff81;
+  }
+
+  &__line {
+    position: absolute;
+    width: 400px;
+    height: 1px;
+    background-color: #1e1e1e;
+    bottom: 49px;
+  }
+}
+
+#horizontal-scroll {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.scroll-wrapper {
+  display: flex;
+  height: 100vh;
+  width: fit-content;
+}
+
+#showcase {
+  display: flex;
+  height: 100vh;
+}
+
+.panel {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f1ee;
+
+  &__title {
+    position: absolute;
+    top: 50px;
+    left: 100px; /* Titre à 100px du bord gauche */
+    font-size: 64px;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 500;
+    color: #8d6bd6;
+    text-transform: uppercase;
+
+    &--2 {
+      color: #a2b2f8;
+    }
+
+    &--3 {
+      color: #a2aece;
+    }
+    &--4 {
+      color: #c70202;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+
+  &__name {
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    font-style: italic;
+    color: #8d6bd6;
+
+    &--2 {
+      color: #a2b2f8;
+    }
+    &--3 {
+      color: #a2aece;
+    }
+    &--4 {
+      color: #c70202;
+    }
+  }
+  &__img {
+    display: block;
+    position: relative;
+    max-height: 350px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    img {
+      width: auto;
+      max-height: 350px;
+    }
+  }
+  &__btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #00faeb;
+    font-size: 24px;
+    color: #1e1e1e;
+    border: #00faeb 2px solid;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 500;
+
+    &:hover {
+      background-color: #00faeb;
+      opacity: 60%;
+      transition: background-color 0.3s ease;
+    }
+
+    &--2 {
+      background-color: #efff78;
+      border: #efff78 2px solid;
+
+      &:hover {
+        background-color: #efff78;
+        opacity: 60%;
+        transition: background-color 0.3s ease;
+      }
+    }
+
+    &--secondary {
+      left: 220px;
+    }
+
+    &--3 {
+      background-color: #a2b2f8;
+      border: #a2b2f8 2px solid;
+
+      &:hover {
+        background-color: #a2b2f8;
+        opacity: 60%;
+        transition: background-color 0.3s ease;
+      }
+    }
+    &--4 {
+      background-color: #c70202;
+      border: #c70202 2px solid;
+
+      &:hover {
+        background-color: #c70202;
+        opacity: 60%;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 20px;
+    font-family: "Clash Display", sans-serif;
+    margin-top: 20px;
+    max-width: 700px;
+  }
+
+  &__line {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #1e1e1e;
+    z-index: 1000;
+  }
+}
+
+// Section CONTACT
+.contact {
+  margin-top: 200px;
+  position: relative;
+
+  &__line {
+    content: "";
+    width: 2px;
+    height: 600px;
+    background: #cfff81;
+    position: absolute;
+    right: 50%;
+    margin: 100px 0 100px 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 64px;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 500;
+    margin-bottom: 50px;
+
+    &--custom {
+      font-family: "PP Pangaia", sans-serif;
+      font-weight: 200;
+      font-style: italic;
+      color: #cfff81;
+    }
+  }
+  &__email {
+    margin-top: 700px;
+    text-align: center;
+    text-decoration: none;
+    color: #1e1e1e;
+    font-size: 96px;
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+
+    &:hover {
+      color: #cfff81;
+      transition: color 0.3s ease;
+    }
+  }
+  &__socials {
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+
+  &__social-link {
+    font-size: 24px;
+    text-decoration: none;
+    color: #1e1e1e;
+    font-family: "clash Display", sans-serif;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #cfff81;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+.footer {
+  margin: 100px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    font-size: 20px;
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    color: #1e1e1e;
+  }
+  &__credit {
+    font-size: 20px;
+    font-family: "clash Display", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    color: #1e1e1e;
+    margin-top: 10px;
+    color: #cfff81;
+    text-decoration: none;
+
+    &:hover {
+      color: #e0ace5;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .projects {
+    max-width: 100%;
+  }
+
+  .projects__line {
+    display: none;
+  }
+
+  .scroll-wrapper {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #showcase {
+    display: block !important;
+    height: auto !important;
+  }
+
+  .panel {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-bottom: 80px;
+    display: block;
+    padding-top: 10px;
+  }
+  .panel__title {
+    position: inherit;
+    text-align: center;
+    margin-left: 100px;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+  }
+  .panel__name {
+    display: block;
+  }
+  .panel__content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .panel__img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .panel__description {
+    margin-left: 100px;
+  }
+
+  #horizontal-scroll {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .vertical-line {
+    display: none;
+  }
+
+  .projects__content {
+    max-width: 100%;
+  }
+
+  .projects__title {
+    max-width: 100%;
+    font-size: 64px;
+    margin-bottom: 40px;
+  }
+  .about {
+    margin: 200px 50px 100px 50px;
+  }
+  .about__text {
+    font-size: 32px;
+  }
+
+  .projects {
+    padding-left: 50px;
+  }
+
+  .panel__title {
+    position: relative;
+    font-size: 48px;
+    left: -50px; /* Ajustement pour le titre */
+  }
+
+  .panel__line {
+    display: none;
+  }
+
+  .panel__description {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .panel__content {
+    padding: 20px;
+    margin-top: 0px;
+  }
+
+  .contact__title {
+    font-size: 48px;
+    margin: 0 50px 20px 50px;
+    text-align: center;
+  }
+
+  .contact__email {
+    font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .panel__title {
+    font-size: 32px;
+  }
+  .hero__background {
+    width: 100%;
+  }
+  .contact__socials {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact__line {
+    margin-top: 180px;
+    height: 150px;
+  }
+  .contact__email {
+    margin-top: 300px;
+    font-size: 28px;
+  }
+
+  .panel__btn {
+    font-size: 12px;
+  }
+
+  .projects__title {
+    font-size: 48px;
+  }
+
+  .hero__title {
+    font-size: 64px;
+  }
+  .hero__subtitle {
+    font-size: 24px;
+  }
+
+  .hero__hour {
+    font-size: 24px;
+    left: 25px;
+  }
+}
