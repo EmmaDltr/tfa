@@ -81,11 +81,12 @@ startClockOnExactMinute();
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const wrapper = document.querySelector(".scroll-wrapper");
-
+const snap = 1 + document.querySelectorAll(".panel").length;
 if (window.innerWidth >= 1024 && wrapper) {
   gsap.to(wrapper, {
     x: () => -(wrapper.scrollWidth - window.innerWidth),
@@ -95,7 +96,15 @@ if (window.innerWidth >= 1024 && wrapper) {
       start: "top top",
       end: () => "+=" + (wrapper.scrollWidth - window.innerWidth),
       scrub: 1,
-      pin: true
+      pin: true,
+      snap: {
+        snapTo: 1 / (snap - 1),
+        duration: 0.5,
+        delay: 0.001,
+        ease: "power1.inOut"
+      }
     }
   });
 }
+
+
