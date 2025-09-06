@@ -93,11 +93,16 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 50%;
   height: 100vh;
 
   background-color: #e0ace5;
-
+  opacity: 0;
+  transform: translateX(-100%);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.77, 0, 0.175, 1),
+    transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+  visibility: hidden;
   & ul {
     position: absolute;
     top: 50%;
@@ -111,6 +116,12 @@ body {
     align-items: center;
     gap: 20px;
   }
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
 }
 
 .vertical-line {
@@ -122,24 +133,29 @@ body {
   background-color: #1e1e1e;
   z-index: 10;
 }
-.header__menu {
-  display: none;
-
-  :active {
-    display: block;
-  }
-}
 
 .menu__links {
   text-decoration: none;
   color: #1e1e1e;
-  font-size: 32px;
-  font-family: "Clash Display", sans-serif;
+  font-size: 100px;
+  font-family: "PP Pangaia", sans-serif;
   font-weight: 500;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: -10px;
+    left: -30px;
+    font-size: 32px;
+    font-family: "Merchant Copy", sans-serif;
+  }
 
   &:hover {
-    color: #cfff81;
-    transition: color 0.3s ease;
+    font-family: "Clash Display", sans-serif;
+    text-decoration: line-through;
+    color: rgba(30, 30, 30, 0.5);
+    transition: color 0.3s ease, font-family 0.3s ease,
+      text-decoration 0.3s ease;
   }
 }
 
@@ -252,21 +268,53 @@ body {
 }
 // Section ABOUT
 .about {
+  max-width: 100vw;
   margin: 400px 0 200px 150px;
   &__content {
-    max-width: 700px;
+    position: relative;
+    max-width: 900px;
+    background: url("/img/rectangle1.svg") no-repeat center;
+    background-size: contain;
+    padding: 50px;
   }
   &__text {
+    max-width: 700px;
     font-size: 64px;
     font-family: "clash Display", sans-serif;
     font-weight: 500;
     color: #cfff81;
+    &--custom {
+      font-family: "PP Pangaia", sans-serif;
+      font-weight: 200;
+      font-style: italic;
+      color: #1e1e1e;
+    }
+    &--underline {
+      display: inline-block;
+      position: relative;
+    }
+    &--underline::after {
+      content: "";
+      width: 400px;
+      height: 30px;
+      display: block;
+      background: url("/img/line.svg") no-repeat center;
+      background-size: contain;
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      z-index: -1;
+    }
   }
-  &__text--custom {
-    font-family: "PP Pangaia", sans-serif;
-    font-weight: 200;
-    font-style: italic;
-    color: #1e1e1e;
+
+  &__img {
+    position: absolute;
+    transform: translate(50%, -150%);
+    transform-origin: bottom left;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
   }
 }
 
@@ -467,6 +515,56 @@ body {
   }
 }
 
+.pixel {
+  margin: 200px 0 100px 150px;
+
+  &__title {
+    width: 50%;
+    font-size: 128px;
+    font-family: "Clash Display", sans-serif;
+    font-weight: 500;
+    color: #1e1e1e;
+    margin-bottom: 50px;
+
+    &--custom {
+      font-family: "PP Pangaia", sans-serif;
+      font-weight: 500;
+      font-style: italic;
+      color: #cfff81;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 200px;
+  }
+
+  &__item {
+    max-width: 650px;
+    aspect-ratio: 16/9;
+    background-color: red;
+    border-radius: 10px;
+    flex: 0 0 auto;
+    position: relative;
+
+    &__label {
+      position: absolute;
+      bottom: -50px;
+      left: 10px;
+      font-size: 24px;
+      font-family: "Clash Display", sans-serif;
+      font-weight: 500;
+      color: #1e1e1e;
+      padding: 5px 10px;
+    }
+
+    &:nth-child(even) {
+      transform: translateY(50%); /* décalage vertical */
+    }
+  }
+}
+
 // Section CONTACT
 .contact {
   margin-top: 200px;
@@ -567,6 +665,12 @@ body {
   }
 }
 
+@media (max-width: 1550px) {
+  .about__img {
+    display: none;
+  }
+}
+
 @media (max-width: 1023px) {
   .projects {
     max-width: 100%;
@@ -581,6 +685,10 @@ body {
     width: 100% !important;
     height: auto !important;
     overflow: visible !important;
+  }
+
+  .about__content {
+    background: none;
   }
 
   #showcase {
@@ -634,6 +742,10 @@ body {
     display: none;
   }
 
+  .header__menu {
+    width: 100%;
+  }
+
   .projects__content {
     max-width: 100%;
   }
@@ -648,6 +760,12 @@ body {
   }
   .about__text {
     font-size: 32px;
+  }
+
+  .about__text--underline::after {
+    width: 200px;
+    height: 15px;
+    bottom: -7px;
   }
 
   .projects {
@@ -695,6 +813,14 @@ body {
   .contact__socials {
     flex-direction: column;
     align-items: center;
+  }
+  .menu__links {
+    font-size: 60px;
+    span {
+      font-size: 20px;
+      top: -5px;
+      left: -20px;
+    }
   }
   .contact__line {
     margin-top: 180px;

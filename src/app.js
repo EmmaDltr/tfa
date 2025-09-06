@@ -1,15 +1,31 @@
 import './app.scss';
 
+
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 const btn = document.querySelector('.header__menu-btn');
 const menu = document.querySelector('.header__menu');
 
+//on load visiblity menu after 1 second
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    if (menu) {
+      menu.style.visibility = 'visible';
+    }
+  }, 500);
+});
+
 btn.addEventListener('click', () => {
-  if (menu.style.display === 'none' || menu.style.display === '') {
-    btn.classList.add('active');
-    menu.style.display = 'block';
-  } else {
+  if (menu.classList.contains('active')) {
     btn.classList.remove('active');
-    menu.style.display = 'none';
+    menu.classList.remove('active');
+  } else {
+    btn.classList.add('active');
+    menu.classList.add('active');
   }
 });
 
@@ -21,17 +37,19 @@ links.forEach(link => {
     event.preventDefault();
 
     btn.classList.remove('active');
-    menu.style.display = 'none';
+    menu.classList.remove('active');
 
     //scroll to the section
     const targetId = link.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+    if (targetId && targetId.startsWith('#')) {
+      gsap.to(window, {
+        duration: 1,
+        scrollTo: {
+          y: targetId,
+          offsetY: 0
+        },
+        ease: "power2.inOut"
       });
-
     }
     // Close the menu on mobile
 
@@ -78,12 +96,6 @@ function startClockOnExactMinute() {
 }
 
 startClockOnExactMinute();
-
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const wrapper = document.querySelector(".scroll-wrapper");
 const snap = 1 + document.querySelectorAll(".panel").length;
