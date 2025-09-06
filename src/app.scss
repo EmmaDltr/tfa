@@ -542,6 +542,7 @@ body {
 
   &__item {
     max-width: 650px;
+    width: 100%;
     aspect-ratio: 16/9;
     background-color: red;
     border-radius: 10px;
@@ -669,9 +670,13 @@ body {
   .about__img {
     display: none;
   }
+
+  .pixel__item {
+    max-width: 450px;
+  }
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1050px) {
   .projects {
     max-width: 100%;
   }
@@ -734,6 +739,14 @@ body {
   #horizontal-scroll {
     height: auto !important;
     overflow: visible !important;
+  }
+
+  .pixel__item {
+    max-width: 350px;
+  }
+
+  .pixel__title {
+    font-size: 96px;
   }
 }
 
@@ -801,6 +814,34 @@ body {
   .contact__email {
     font-size: 38px;
   }
+
+  .pixel {
+    margin: 200px 50px 100px 50px;
+
+    &__title {
+      width: 100%;
+      font-size: 96px;
+      margin-bottom: 30px;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 100px;
+    }
+
+    &__item {
+      max-width: 90%;
+      &:nth-child(even) {
+        transform:  translateX(-20px); /* supprimer le décalage vertical */
+      }
+
+      &:nth-child(odd) {
+        transform:  translateX(20px); /* supprimer le décalage vertical */
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -849,5 +890,9 @@ body {
   .hero__hour {
     font-size: 24px;
     left: 25px;
+  }
+
+  .pixel__title {
+    font-size: 64px;
   }
 }
