@@ -136,7 +136,7 @@ window.addEventListener('load', () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".about",
-        start: "top 80%"
+        start: "top 70%",
       }
     });
   }
@@ -152,7 +152,7 @@ window.addEventListener('load', () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".projects",
-        start: "top 80%"
+        start: "top 70%"
       }
     });
   }
@@ -169,7 +169,7 @@ window.addEventListener('load', () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".pixel",
-        start: "top 80%"
+        start: "top 70%"
       }
     });
   }
@@ -186,7 +186,7 @@ window.addEventListener('load', () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: item,
-        start: "top 80%"
+        start: "top 70%"
       }
     });
 
@@ -216,7 +216,7 @@ window.addEventListener('load', () => {
     ease: "power2.out",
     scrollTrigger: {
       trigger: ".hero",
-      start: "top 80%"
+      start: "top 70%"
     }
   })
 
@@ -232,7 +232,7 @@ window.addEventListener('load', () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".hero",
-        start: "top 80%"
+        start: "top 70%"
       }
     });
   }
