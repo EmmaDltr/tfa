@@ -157,10 +157,10 @@ window.addEventListener('load', () => {
     });
   }
 
-  let splitPixel = SplitText.create(".pixel__title", { type: "chars" });
+  let splitPixel = SplitText.create(".pixel__title", { type: "words" });
 
   if (splitPixel) {
-    gsap.from(splitPixel.chars, {
+    gsap.from(splitPixel.words, {
       opacity: 0,
       y: 20,
       stagger: {
@@ -188,6 +188,21 @@ window.addEventListener('load', () => {
         trigger: item,
         start: "top 80%"
       }
+    });
+
+    item.addEventListener('mouseenter', () => {
+      gsap.to(item, {
+        scale: 1.1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+    item.addEventListener('mouseleave', () => {
+      gsap.to(item, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
     });
   });
 
