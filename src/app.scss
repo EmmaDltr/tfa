@@ -1,3 +1,38 @@
+#preloader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    circle at top right,
+    #cfff81 0%,
+    #ffffff 50%,
+    #e0ace5 100%
+  );
+  z-index: 9999;
+  transition: opacity 400ms ease, visibility 400ms ease;
+}
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* spinner */
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 6px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #e0ace5;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -78,7 +113,6 @@
 }
 
 body {
-  margin: 0;
   min-height: 100vh;
   background: radial-gradient(
     circle at top right,
@@ -131,7 +165,7 @@ body {
   width: 1px;
   height: 100vh;
   background-color: #1e1e1e;
-  z-index: 10;
+  z-index: -1;
 }
 
 .menu__links {
@@ -380,8 +414,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f2f1ee;
+  background-color: #1e1e1e;
+  color: #bfbfbf;
+  &.design-fiction {
+    background-image: url("/img/background-designfiction.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 
+  &.capture {
+    background-image: url("/img/background-capture.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  &.variables {
+    background-image: url("/img/background-variables.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+  }
   &__title {
     position: absolute;
     top: 50px;
@@ -397,53 +450,64 @@ body {
     }
 
     &--3 {
-      color: #a2aece;
+      color: #686e83;
     }
     &--4 {
       color: #c70202;
     }
   }
 
+  &__design {
+    font-family: "PP Pangaia", sans-serif;
+    font-weight: 100;
+    font-size: 24px;
+    font-style: italic;
+  }
+
   &__content {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 1fr 1fr;
     margin-top: 100px;
   }
 
   &__name {
     font-family: "PP Pangaia", sans-serif;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 64px;
     font-style: italic;
+    text-transform: uppercase;
     color: #8d6bd6;
 
     &--2 {
       color: #a2b2f8;
     }
     &--3 {
-      color: #a2aece;
+      color: #686e83;
     }
     &--4 {
       color: #c70202;
     }
   }
   &__img {
-    display: block;
-    position: relative;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
     max-height: 350px;
     width: auto;
     height: auto;
-    display: block;
     margin: 0 auto;
     img {
       width: auto;
       max-height: 350px;
     }
   }
+  &__btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
   &__btn {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
     padding: 10px 20px;
     background-color: #00faeb;
     font-size: 24px;
@@ -453,7 +517,7 @@ body {
     cursor: pointer;
     font-family: "Clash Display", sans-serif;
     font-weight: 500;
-
+    max-width: 200px;
     &:hover {
       background-color: #00faeb;
       opacity: 60%;
@@ -498,10 +562,10 @@ body {
   }
 
   &__description {
-    font-size: 20px;
+    font-size: 24px;
     font-family: "Clash Display", sans-serif;
     margin-top: 20px;
-    max-width: 700px;
+    max-width: 500px;
   }
 
   &__line {
@@ -510,8 +574,19 @@ body {
     left: 0;
     right: 0;
     height: 1px;
-    background-color: #1e1e1e;
+    background-color: #bfbfbf;
     z-index: 1000;
+
+    &--vertical {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 70px;
+      width: 1px;
+      height: 100vh;
+      background-color: #bfbfbf;
+      z-index: 11;
+    }
   }
 }
 
@@ -629,7 +704,7 @@ body {
 
 // Section CONTACT
 .contact {
-  margin-top: 200px;
+  margin-top: 400px;
   position: relative;
 
   &__line {
@@ -811,8 +886,45 @@ body {
   }
 }
 
+@media screen and (max-width: 1100px) {
+  .panel {
+    &__content {
+      gap: 50px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      margin-top: 300px;
+    }
+    &__name {
+      font-size: 48px;
+    }
+    &__description {
+      font-size: 20px;
+    }
+  }
+}
+
 @media (max-width: 900px) {
+  .panel__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .panel {
+    padding-top: 50px;
+    padding-bottom: 150px;
+  }
+
+  .projects {
+    background-color: #e0ace5;
+  }
+  #showcase {
+    background-color: #1e1e1e;
+  }
   .vertical-line {
+    display: none;
+  }
+
+  .panel__line--vertical {
     display: none;
   }
 
