@@ -516,7 +516,7 @@ body {
 }
 
 .pixel {
-  margin: 200px 0 100px 150px;
+  margin: 300px 0 100px 150px;
 
   &__title {
     width: 50%;
@@ -524,7 +524,7 @@ body {
     font-family: "Clash Display", sans-serif;
     font-weight: 500;
     color: #1e1e1e;
-    margin-bottom: 50px;
+    margin-bottom: 200px;
 
     &--custom {
       font-family: "PP Pangaia", sans-serif;
@@ -541,17 +541,18 @@ body {
   }
 
   &__item {
-    max-width: 650px;
+    max-width: 545px;
+    max-height: 343px;
     width: 100%;
-    aspect-ratio: 16/9;
-    background-color: red;
+    aspect-ratio: 16/10;
     border-radius: 10px;
     flex: 0 0 auto;
     position: relative;
+    border: 2px solid #cfff81;
 
     &__label {
       position: absolute;
-      bottom: -50px;
+      bottom: -80px;
       left: 10px;
       font-size: 24px;
       font-family: "Clash Display", sans-serif;
@@ -560,8 +561,68 @@ body {
       padding: 5px 10px;
     }
 
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+      cursor: url("/img/cursor.svg") 3 0, auto;
+    }
+
     &:nth-child(even) {
       transform: translateY(50%); /* décalage vertical */
+      &:hover {
+        transform: translateY(50%) scale(1.05);
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:nth-child(1) {
+      background: url("/img/MusicFestival.png") no-repeat center;
+      background-size: cover;
+
+      &:hover {
+        background: url("/img/MusicFestival-gif.gif") no-repeat center;
+        background-size: cover;
+      }
+    }
+
+    &:nth-child(2) {
+      background: url("/img/TattooStudio.png") no-repeat center;
+      background-size: cover;
+    }
+
+    &:nth-child(3) {
+      background: url("/img/Flotional.png") no-repeat center;
+      background-size: cover;
+
+      &:hover {
+        background: url("/img/Flotional-gif.gif") no-repeat center;
+        background-size: cover;
+      }
+    }
+    &:nth-child(4) {
+      background: url("/img/Error404.png") no-repeat center;
+      background-size: cover;
+    }
+    &:nth-child(5) {
+      background: url("/img/Error404Coffe.png") no-repeat center;
+      background-size: cover;
+    }
+    &:nth-child(6) {
+      background: url("/img/GermainDuchene.png") no-repeat center;
+      background-size: cover;
+      &:hover {
+        background: url("/img/GermainDuchene-gif.gif") no-repeat center;
+        background-size: cover;
+      }
+    }
+    &:nth-child(7) {
+      background: url("/img/TransportationApp.png") no-repeat center;
+      background-size: cover;
+
+      &:hover {
+        background: url("/img/TransportationApp-gif.gif") no-repeat center;
+        background-size: cover;
+      }
     }
   }
 }
@@ -834,13 +895,25 @@ body {
     &__item {
       max-width: 90%;
       &:nth-child(even) {
-        transform:  translateX(-20px); /* supprimer le décalage vertical */
+        transform: translateX(-20px); /* supprimer le décalage vertical */
       }
 
       &:nth-child(odd) {
-        transform:  translateX(20px); /* supprimer le décalage vertical */
+        transform: translateX(20px); /* supprimer le décalage vertical */
+      }
+
+      &__label {
+        font-size: 20px;
+        bottom: -40px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .pixel__item__label {
+    font-size: 16px;
+    bottom: -50px;
   }
 }
 
