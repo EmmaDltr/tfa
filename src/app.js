@@ -141,9 +141,9 @@ window.addEventListener('load', () => {
     });
   }
 
-  let splitProjects = SplitText.create(".projects__title", { type: "chars" });
+  let splitProjects = SplitText.create(".projects__title", { type: "words" });
   if (splitProjects) {
-    gsap.from(splitProjects.chars, {
+    gsap.from(splitProjects.words, {
       opacity: 0,
       y: 20,
       stagger: {
