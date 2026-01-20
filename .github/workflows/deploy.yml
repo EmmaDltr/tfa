@@ -24,6 +24,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Move files to root (Astuce pour éviter le dossier dist)
+        run: |
+          cp -r dist/* .
+          rm -rf dist
+      
       - name: Deploy via sFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -31,6 +36,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          local_path: ./dist/
+          local_path: ./
           remote_path: ${{ secrets.FTP_DIR }}
           sftp_only: true
